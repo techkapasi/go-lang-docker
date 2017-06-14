@@ -9,7 +9,7 @@ import (
 )
 
 type dataSender struct {
-	username string
+	Username string
 }
 
 func sayhelloName(w http.ResponseWriter, r *http.Request) {
@@ -23,17 +23,17 @@ func sayhelloName(w http.ResponseWriter, r *http.Request) {
 		fmt.Println("val:", strings.Join(v, ""))
 	}
 
-	data := &dataSender{}
-	data.username = "World!"
+	data := dataSender{}
+	data.Username = "World!"
 
 	// tmpl is the HTML template that drives the user interface.
 	var tmpl = template.Must(template.New("tmpl").Parse(`
 	<!DOCTYPE html><html><body><center>
-		<h1>Hello {.username}</h1>
+		<h1>Hello {{.Username}}</h1>
 	</center></body></html>
 	`))
 
-	err := tmpl.Execute(w, r)
+	err := tmpl.Execute(w, data)
 	if err != nil {
 		log.Print(err)
 	}
