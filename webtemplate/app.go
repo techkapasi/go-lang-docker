@@ -6,13 +6,13 @@ import (
 	"net/http"
 )
 
-func runHTMLTemplate2(w http.ResponseWriter, r *http.Request) {
+func runHTMLTemplate(w http.ResponseWriter, r *http.Request) {
 
 	data := struct {
 		Name     string
 		Company  string
 	}{
-		"Asjad",
+		"Hasan Kapasi",
 		"10Pearls",
 	}
 
@@ -34,3 +34,10 @@ func runHTMLTemplate2(w http.ResponseWriter, r *http.Request) {
 	}
 }
 
+func main() {
+	http.HandleFunc("/", runHTMLTemplate2)       // set router
+	err := http.ListenAndServe(":8080", nil) // set listen port
+	if err != nil {
+		log.Fatal("ListenAndServe: ", err)
+	}
+}
