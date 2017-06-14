@@ -24,7 +24,7 @@ func sayhelloName(w http.ResponseWriter, r *http.Request) {
 	}
 
 	data := &dataSender{}
-	data.username = "World"
+	data.username = "World!"
 
 	// tmpl is the HTML template that drives the user interface.
 	var tmpl = template.Must(template.New("tmpl").Parse(`
